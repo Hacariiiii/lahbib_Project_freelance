@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="8Crud9cWNKN7_GYRVRENvESn6qDFZ6bYdZHS26aKwgo" />
+  
+  <title>Mohammed Lahfid — Préparation Mentale & Neurosciences</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       CSS VARIABLES & RESET
+    ========================================================= */
+    :root {
+      --black:    #080808;
+      --deep:     #0e0e0e;
+      --surface:  #141414;
+      --card:     #1a1a1a;
+      --border:   #2a2a2a;
+      --gold:     #c9a84c;
+      --gold-lt:  #e0c070;
+      --white:    #f0ece3;
+      --muted:    #888880;
+      --green:    #3d6b4f;
+
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-serif:   'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --nav-h: 72px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* =========================================================
+       SCROLLBAR
+    ========================================================= */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* =========================================================
+       UTILITY
+    ========================================================= */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    .gold { color: var(--gold); }
+    .tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       IMAGE PLACEHOLDER HELPER
+       Replace <div class="img-placeholder"> with <img> tags
+    ========================================================= */
+    .img-placeholder {
+      background: var(--card);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-family: var(--font-body);
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    .img-placeholder svg {
+      width: 40px; height: 40px;
+      opacity: 0.35;
+    }
+    .img-placeholder span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: black;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(8,8,8,0.94);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .nav-logo-name {
+      font-family: var(--font-display);
+      font-size: 30px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+      position: relative;
+      right: 30px;
+    }
+    .nav-logo-sub {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      position: relative;
+      right: 30px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--white);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-cta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; transform: translateY(-1px) !important; }
+.expertise-image {
+  position: relative;
+}
+
+.expertise-image img,
+.expertise-image .img-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-placeholder {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.img-placeholder svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: rgba(8,8,8,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* =========================================================
+       SECTION BASE
+    ========================================================= */
+    section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5vw, 72px);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .section-body {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* Divider line */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* =========================================================
+       1. HERO
+    ========================================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hero background image area */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-terrain-kacm.jpg" alt="Mohammed Lahfid KACM" />
+         Taille recommandée : 1920×1080px ou plus grande
+    ---- */
+    .hero-bg .img-placeholder {
+      width: 100%; height: 100%;
+      filter: grayscale(100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+     
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding-top: var(--nav-h);
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 37px;
+      animation: fadeUp 0.8s var(--ease) both;
+      position:relative;
+      top:10px;
+      background: black;
+      border-radius: 30px;
+      
+    }
+    .hero-eyebrow-line {
+      width: 40px; height: 3px;
+      background: var(--gold);
+    }
+    .hero-eyebrow-text {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 9vw, 130px);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.1s var(--ease) both;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-size: 0.78em;
+      color: var(--white);
+      display: block;
+      position:relative;
+      right:28px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--white);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.2s var(--ease) both;
+      background: black;
+      padding:20px;
+      border-radius: 30px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s var(--ease) both;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeIn 1s 1s both;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* =========================================================
+       2. POSITIONNEMENT (IMPACT)
+    ========================================================= */
+    #positionnement {
+      background: var(--deep);
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .impact-left .section-title {
+      font-size: clamp(36px, 4vw, 58px);
+    }
+    .impact-statement {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+    }
+    .impact-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pillar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pillar:hover {
+      border-color: var(--gold);
+      transform: translateX(6px);
+    }
+    .pillar-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 16px;
+    }
+    .pillar-text {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    /* =========================================================
+       3. EXPERTISE TERRAIN
+    ========================================================= */
+    #expertise {
+      background: var(--black);
+    }
+    .expertise-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-echange-entraineur.jpg" alt="Mohammed Lahfid avec entraîneur" />
+         Taille recommandée : 700×900px portrait
+    ---- */
+    .expertise-image {
+      position: relative;
+      height: 540px;
+    }
+    .expertise-image .img-placeholder { height: 100%; border-radius: 4px; }
+    .expertise-image-badge {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 20px 28px;
+      border-radius: 4px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      max-width: 200px;
+      line-height: 1.4;
+      z-index: 1;
+    }
+
+    .expertise-services {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .service-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .service-item:last-child { border-bottom: none; }
+    .service-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--border);
+      line-height: 1;
+      transition: color 0.3s;
+      flex-shrink: 0;
+      width: 52px;
+    }
+    .service-item:hover .service-number { color: var(--gold); }
+    .service-info h4 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+    .service-info p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .expertise-signature {
+      margin-top: 36px;
+      padding: 24px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--white);
+    }
+
+    /* =========================================================
+       4. PERFORMANCE HAUT NIVEAU
+    ========================================================= */
+    #performance {
+      background: var(--deep);
+      overflow: hidden;
+    }
+    .performance-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .performance-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .perf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .perf-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .perf-card-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .perf-card-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .perf-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-banc-touche.jpg" alt="Banc de touche" />
+         Taille recommandée : 700×600px
+    ---- */
+    .performance-image {
+      height: 520px;
+      position: relative;
+      top: 100px;
+    }
+    .performance-image .img-placeholder { height: 100%; position: relative; border-radius: 4px; }
+
+    .perf-stat-badge {
+      position: absolute;
+      top: -20px; left: -20px;
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      border-radius: 4px;
+    }
+    .perf-stat-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .perf-stat-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       5. FORMATIONS & CONFERENCES
+    ========================================================= */
+    #formations {
+      background: var(--black);
+    }
+    .formations-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-conference.jpg" alt="Mohammed Lahfid conférence" />
+         Taille recommandée : 700×600px
+    ---- */
+    .formations-image {
+      height: 480px;
+    }
+    .formations-image .img-placeholder { height: 100%; border-radius: 4px; }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 32px;
+    }
+    .theme-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+    .theme-card:hover { border-color: var(--gold); }
+    .theme-card-icon { font-size: 22px; margin-bottom: 10px; }
+    .theme-card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      margin-bottom: 32px;
+    }
+    .audience-tag {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* =========================================================
+       6. MÉDIAS & CRÉDIBILITÉ
+    ========================================================= */
+    #medias {
+      background: var(--deep);
+    }
+    .medias-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-studio-radio.jpg" alt="Mohammed Lahfid studio radio" />
+         Taille recommandée : 700×500px
+    ---- */
+    .medias-image {
+      height: 440px;
+    }
+    .medias-image .img-placeholder { height: 100%; border-radius: 4px; }
+
+    .media-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .media-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+    .media-item:hover { border-color: var(--gold); }
+    .media-item-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .media-item-text {
+      font-size: 14px;
+      color: var(--white);
+    }
+    .media-item-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* =========================================================
+       7. DIMENSION INTERNATIONALE
+    ========================================================= */
+    #international {
+      background: var(--black);
+    }
+    .international-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-maroc-espagne.jpg" alt="Drapeaux Maroc / Espagne" />
+         Taille recommandée : 700×500px
+    ---- */
+    .international-image {
+      height: 500px;
+    }
+    .international-image .img-placeholder { height: 100%; border-radius: 4px; }
+
+    .bridges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .bridge-item {
+      display: flex;
+      gap: 18px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+    }
+    .bridge-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .bridge-desc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       8. À PROPOS
+    ========================================================= */
+    #apropos {
+      background: var(--deep);
+    }
+    .apropos-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- IMAGE PLACEHOLDER ----
+         Remplacez ce div par :
+         <img src="votre-photo-portrait-souriant.jpg" alt="Mohammed Lahfid portrait" />
+         Taille recommandée : 600×750px portrait, format humain/proche
+    ---- */
+    .apropos-image {
+      height: 560px;
+      position: relative;
+    }
+    .apropos-image .img-placeholder { height: 100%; border-radius: 4px; }
+    .apropos-image-tag {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      border-radius: 4px;
+    }
+    .apropos-image-tag-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.08em;
+    }
+    .apropos-image-tag-role {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .apropos-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--white);
+      margin-bottom: 32px;
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+    }
+    .apropos-values {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .value-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .value-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .value-text {
+      font-size: 15px;
+      color: var(--white);
+    }
+
+    /* =========================================================
+       9. SIGNATURE UNIQUE
+    ========================================================= */
+    #signature {
+      background: var(--black);
+      padding: 100px 0;
+    }
+    .signature-inner {
+      text-align: center;
+    }
+    .signature-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 0.05em;
+      margin-bottom: 60px;
+      color: var(--white);
+    }
+    .sig-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+    }
+    .sig-pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 20px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .sig-pillar:hover {
+      background: rgba(201,168,76,0.07);
+      border-color: var(--gold);
+    }
+    .sig-pillar-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .sig-pillar-label {
+      font-family: var(--font-display);
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    /* =========================================================
+       10. CTA FINAL
+    ========================================================= */
+    #contact {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      align-items: center;
+    }
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .cta-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .impact-grid,
+      .expertise-inner,
+      .performance-layout,
+      .formations-layout,
+      .medias-layout,
+      .international-layout,
+      .apropos-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      .expertise-image,
+      .performance-image,
+      .formations-image,
+      .medias-image,
+      .international-image,
+      .apropos-image { height: 450px; }
+
+      .expertise-image-badge { right: 0; bottom: -16px; }
+
+      .sig-pillars { grid-template-columns: repeat(2, 1fr); }
+
+      .hero-title { font-size: 64px; }
+    }
+
+    @media (max-width: 560px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: 52px; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .sig-pillars { grid-template-columns: 1fr 1fr; }
+      section { padding: 80px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================= -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-name">Mohammed LAHFID</span>
+      
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#positionnement">Approche</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#formations">Formations</a></li>
+        <li><a href="#medias">Médias</a></li>
+        <li><a href="#apropos">À Propos</a></li>
+        <li><a href="#contact" class="nav-cta" 
+     style="display: flex; justify-content: center; align-items: center;">
+    Contact
+  </a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#positionnement">Approche</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#performance">Performance</a>
+    <a href="#formations">Formations</a>
+    <a href="#medias">Médias</a>
+    <a href="#apropos">À Propos</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+
+  <!-- =========================================================
+       1. HERO
+  ========================================================= -->
+  <section id="hero">
+    <!-- BACKGROUND IMAGE -->
+    <div class="hero-bg">
+  
+           <img src="photos/echange-entraineur.png" alt="Mohammed Lahfid au centre des joueurs KACM" />
+        
+     
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-text">Préparation Mentale · Neurosciences · Football de Haut Niveau</span>
+        </div>
+
+        <h1 class="hero-title">
+          Le mental<br />
+          ne fait pas<br />
+          <em style="position: relative; left: 10px;   ">la différence</em><br />
+        
+        </h1>
+
+        <p class="hero-sub">
+          J'accompagne joueurs, entraîneurs et staffs à transformer leur potentiel
+          en performance durable grâce aux neurosciences et à la préparation mentale
+          de haut niveau.
+        </p>
+
+        <div class="hero-actions" style="position: relative; bottom: 12px;">
+          <a href="#contact" class="btn btn-primary">
+            ⚡ Optimiser ma performance
+          </a>
+          <a href="#positionnement" class="btn btn-outline">
+            Découvrir l'approche
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" onclick="document.getElementById('positionnement').scrollIntoView({behavior:'smooth'})">
+      
+     
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       2. POSITIONNEMENT
+  ========================================================= -->
+  <section id="positionnement">
+    <div class="container">
+      <div class="impact-grid">
+        <div class="impact-left reveal">
+          <span class="tag">Impact</span>
+          <h2 class="section-title">
+            Une expertise née<br />
+            du terrain, validée<br />
+            par la <span class="gold" style="color: #f0ece3;">réalité.</span>
+          </h2>
+          <div class="impact-statement">
+            Tu n'es pas un coach théorique.<br />
+            Tu es un acteur de la performance réelle,<br />
+            au contact direct du terrain.
+          </div>
+          <p class="section-body">
+            Joueurs, entraîneurs, situations de pression — c'est là que
+            l'approche se forge. Pas dans les livres, mais dans le feu du jeu.
+          </p>
+        </div>
+
+        <div class="impact-right reveal" style="transition-delay:0.15s">
+          <p style="font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">
+            L'approche repose sur
+          </p>
+          <div class="impact-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">🧠</div>
+              <span class="pillar-text">Neuroscience appliquée au sport de haut niveau</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">💢</div>
+              <span class="pillar-text">Gestion émotionnelle en match et sous pression</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">⚡</div>
+              <span class="pillar-text">Prise de décision dans les moments critiques</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🎯</div>
+              <span class="pillar-text">Performance durable et maîtrisée</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       3. EXPERTISE TERRAIN
+  ========================================================= -->
+  <section id="expertise">
+    <div class="container">
+      <div class="expertise-inner">
+
+        <!-- IMAGE -->
+        <div class="expertise-image reveal">
+  <img src="photos/hero-terrain-kacm.jpg" alt="Mohammed Lahfid préparation mentale" />
+  <div class="expertise-image-badge">
+    Un match se joue deux fois :<br/>
+    d'abord dans le cerveau,<br/>
+    ensuite sur le terrain.
+  </div>
+</div>
+
+        <!-- CONTENU -->
+        <div class="reveal" style="transition-delay:0.15s">
+          <span class="tag">Expertise terrain</span>
+          <h2 class="section-title">Penser le match<br />avant qu'il<br />ne <span class="gold" style="color:#f0ece3;">se joue</span></h2>
+
+          <div class="expertise-services">
+            <div class="service-item">
+              <span class="service-number">01</span>
+              <div class="service-info">
+                <h4>Préparation mentale individuelle</h4>
+                <p>Travail sur-mesure avec chaque joueur selon son profil neurologique et émotionnel.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-number">02</span>
+              <div class="service-info">
+                <h4>Accompagnement des staffs techniques</h4>
+                <p>Intégration de la dimension mentale dans la stratégie globale de l'équipe.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-number">03</span>
+              <div class="service-info">
+                <h4>Optimisation des états émotionnels</h4>
+                <p>Outils concrets pour atteindre et maintenir les états de performance optimale.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="service-number">04</span>
+              <div class="service-info">
+                <h4>Lecture mentale des moments clés</h4>
+                <p>Analyse et intervention sur les basculements décisifs du match.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       4. PERFORMANCE HAUT NIVEAU
+  ========================================================= -->
+  <section id="performance">
+    <div class="container">
+      <div class="performance-layout">
+
+        <!-- CONTENU -->
+        <div class="reveal">
+          <span class="tag">Performance</span>
+          <h2 class="section-title">La lucidité<br />quand tout<br /><span class="gold" style="color: #f0ece3;">s'accélère</span></h2>
+          <p class="section-body" style="margin-bottom:36px;">
+            Dans les moments critiques, le mental devient déterminant.
+            Fatigue, pression du score, décisions rapides — c'est là que l'écart se crée.
+          </p>
+
+          <div class="performance-cards">
+            <div class="perf-card">
+              <div class="perf-card-icon">🎯</div>
+              <div>
+                <div class="perf-card-title">Stabiliser l'attention</div>
+                <div class="perf-card-desc">Maintenir la concentration focale même sous pression maximale.</div>
+              </div>
+            </div>
+            <div class="perf-card">
+              <div class="perf-card-icon">💡</div>
+              <div>
+                <div class="perf-card-title">Renforcer la clarté décisionnelle</div>
+                <div class="perf-card-desc">Accéder à la bonne décision plus vite, avec moins d'hésitation.</div>
+              </div>
+            </div>
+            <div class="perf-card">
+              <div class="perf-card-icon">🛡️</div>
+              <div>
+                <div class="perf-card-title">Éviter les erreurs émotionnelles</div>
+                <div class="perf-card-desc">Réguler les réponses automatiques qui coûtent des buts et des matchs.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="performance-image reveal" style="transition-delay:0.15s">
+  
+  <img 
+    src="photos/banc-de-touche.png" 
+    alt="Banc de touche match de football"
+    style="width:100%; height:100%; object-fit:cover; object-position: 10% center;"
+  />
+
+  <div class="perf-stat-badge">
+    <div class="perf-stat-num">
+      90<span style="font-size:20px;color:var(--muted)">min</span>
+    </div>
+    <div class="perf-stat-label">de décisions mentales</div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       5. FORMATIONS & CONFÉRENCES
+  ========================================================= -->
+  <section id="formations">
+    <div class="container">
+      <div class="formations-layout">
+
+        <!-- CONTENU -->
+        <div class="reveal">
+          <span class="tag">Formations</span>
+          <h2 class="section-title">Transmettre la<br />dimension<br /><span class="gold" style="color: white;">mentale</span></h2>
+          <p class="section-body">
+            Former les acteurs du football moderne à intégrer les neurosciences
+            dans leur pratique quotidienne.
+          </p>
+
+          <div class="audience-list">
+            <span class="audience-tag">Entraîneurs</span>
+            <span class="audience-tag">Éducateurs</span>
+            <span class="audience-tag">Structures sportives</span>
+            <span class="audience-tag">Académies</span>
+          </div>
+
+          <div class="themes-grid">
+            <div class="theme-card">
+              <div class="theme-card-icon">🧠</div>
+              <div class="theme-card-title">Neurosciences & Performance</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-card-icon">💢</div>
+              <div class="theme-card-title">Gestion de la Pression</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-card-icon">👑</div>
+              <div class="theme-card-title">Leadership Mental</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-card-icon">❤️</div>
+              <div class="theme-card-title">Intelligence Émotionnelle</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IMAGE -->
+      <div class="formations-image reveal" style="transition-delay:0.15s">
+  <img src="photos/maroc-espagne-drapeaux.jpg" alt="Mohammed Lahfid en conférence" />
+</div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       6. MÉDIAS & CRÉDIBILITÉ
+  ========================================================= -->
+  <section id="medias">
+    <div class="container">
+      <div class="medias-layout">
+
+        <!-- IMAGE -->
+        <div class="medias-image reveal">
+      
+               <img src="photos/studio-radio.jpg" alt="Mohammed Lahfid en studio radio" />
+          
+          
+        </div>
+
+        <!-- CONTENU -->
+        <div class="reveal" style="transition-delay:0.15s">
+          <span class="tag">Médias</span>
+          <h2 class="section-title">Une expertise<br />reconnue et<br /><span class="gold" style="color: white;">partagée</span></h2>
+          <p class="section-body">
+            Présence régulière dans les médias sportifs pour décrypter
+            la dimension invisible de la performance.
+          </p>
+
+          <div class="media-items">
+            <div class="media-item">
+              <div class="media-item-dot"></div>
+              <div>
+                <div class="media-item-text">Comportement des joueurs sous pression</div>
+                <div class="media-item-sub">Analyse neurologique des réactions en match</div>
+              </div>
+            </div>
+            <div class="media-item">
+              <div class="media-item-dot"></div>
+              <div>
+                <div class="media-item-text">Les bascules mentales décisives</div>
+                <div class="media-item-sub">Décryptage des tournants psychologiques</div>
+              </div>
+            </div>
+            <div class="media-item">
+              <div class="media-item-dot"></div>
+              <div>
+                <div class="media-item-text">Dynamiques invisibles de la performance</div>
+                <div class="media-item-sub">Ce que les caméras ne montrent pas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       7. DIMENSION INTERNATIONALE
+  ========================================================= -->
+  <section id="international">
+    <div class="container">
+      <div class="international-layout">
+
+        <!-- CONTENU -->
+        <div class="reveal">
+          <span class="tag">International</span>
+          <h2 class="section-title">Une vision<br />ouverte du<br /><span class="gold" style="color: #f0ece3;">football moderne</span></h2>
+          <p class="section-body">
+            Interface entre cultures sportives, méthodes d'entraînement
+            et approches neuroscientifiques venues des quatre coins du monde.
+          </p>
+
+          <div class="bridges-list">
+            <div class="bridge-item">
+              <div>
+                <div class="bridge-label">🇲🇦 Culture sportive marocaine</div>
+                <div class="bridge-desc">Ancrage dans les réalités du football africain et maghrébin</div>
+              </div>
+            </div>
+            <div class="bridge-item">
+              <div>
+                <div class="bridge-label">🇪🇸 Méthodes européennes</div>
+                <div class="bridge-desc">Intégration des approches neuroscientifiques espagnoles et européennes</div>
+              </div>
+            </div>
+            <div class="bridge-item">
+              <div>
+                <div class="bridge-label">🌍 Interface interculturelle</div>
+                <div class="bridge-desc">Adapter les outils au contexte et aux profils des joueurs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="international-image reveal" style="transition-delay:0.15s ">
+
+               <img src="photos/conference-micro-ecran.jpg" alt="Drapeaux Maroc et Espagne" style="width:100%; height:130%; object-fit:contain; object-position: 40% center;" />
+            
+         
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       8. À PROPOS
+  ========================================================= -->
+  <section id="apropos">
+    <div class="container">
+      <div class="apropos-layout">
+
+        <!-- IMAGE -->
+        <div class="apropos-image reveal">
+         
+               <img src="photos/portrait-souriant.jpg" alt="Mohammed Lahfid portrait" />
+       
+         
+          <div class="apropos-image-tag">
+            <div class="apropos-image-tag-name">Mohammed Lahfid</div>
+            <div class="apropos-image-tag-role">Préparateur Mental · Neurosciences</div>
+          </div>
+        </div>
+
+        <!-- CONTENU -->
+        <div class="reveal" style="transition-delay:0.15s">
+          <span class="tag">À Propos</span>
+          <h2 class="section-title">L'humain au<br />cœur de la<br /><span class="gold" style="color: #f0ece3;">performance</span></h2>
+
+          <div class="apropos-quote">
+            Derrière chaque performance, il y a un cerveau,<br />
+            et derrière chaque cerveau, il y a une histoire.
+          </div>
+
+          <p class="section-body" style="margin-bottom:28px;">
+            Un accompagnement qui combine exigence de haut niveau, écoute authentique
+            et précision neuroscientifique. L'objectif est simple :
+            libérer le potentiel réel de chaque athlète.
+          </p>
+
+          <div class="apropos-values">
+            <div class="value-row">
+              <div class="value-dot"></div>
+              <span class="value-text">Exigence — les standards du haut niveau, sans compromis</span>
+            </div>
+            <div class="value-row">
+              <div class="value-dot"></div>
+              <span class="value-text">Écoute — comprendre avant d'intervenir</span>
+            </div>
+            <div class="value-row">
+              <div class="value-dot"></div>
+              <span class="value-text">Précision — des outils adaptés, pas génériques</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary">Travailler ensemble</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       9. SIGNATURE UNIQUE
+  ========================================================= -->
+  <section id="signature">
+    <div class="container">
+      <div class="signature-inner reveal">
+        <h2 class="signature-title">L'identité d'une approche</h2>
+        <div class="sig-pillars">
+          <div class="sig-pillar">
+            <div class="sig-pillar-icon">⚡</div>
+            <div class="sig-pillar-label">Terrain<br />Réel</div>
+          </div>
+          <div class="sig-pillar">
+            <div class="sig-pillar-icon">🧠</div>
+            <div class="sig-pillar-label">Neurosciences<br />Appliquées</div>
+          </div>
+          <div class="sig-pillar">
+            <div class="sig-pillar-icon">⚽</div>
+            <div class="sig-pillar-label">Football Haut<br />Niveau</div>
+          </div>
+          <div class="sig-pillar">
+            <div class="sig-pillar-icon">🎓</div>
+            <div class="sig-pillar-label">Transmission<br />& Formation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       10. APPEL À L'ACTION
+  ========================================================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <span class="tag">Contact</span>
+        <h2 class="cta-title">
+          Faisons entrer la<br />
+          dimension mentale<br />
+          dans votre <span class="gold" style="color: #f0ece3;">performance</span>
+        </h2>
+        <p class="cta-sub">
+          Clubs, académies, entraîneurs, joueurs —<br />
+          Construisons ensemble une performance plus stable,<br />
+          plus lucide, plus maîtrisée.
+        </p>
+        <div class="cta-buttons">
+          <a href="mailto:contact@mohammedlahfid.com" class="btn btn-primary">
+            ✉️ Prendre contact
+          </a>
+          <a href="mailto:contact@mohammedlahfid.com?subject=Demande%20intervention" class="btn btn-outline">
+            🎤 Demander une intervention
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">Mohammed Lahfid</span>
+        <span class="footer-copy">
+          Préparation Mentale · Neurosciences · Football de Haut Niveau
+        </span>
+        <span class="footer-copy">© 2025 — Tous droits réservés</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
+  <script>
+    // ── Navbar : fond au scroll ──────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Navbar : lien actif selon section visible ────────────
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: `-${navbar.offsetHeight}px 0px -40% 0px`,
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // ── Smooth scroll pour TOUS les liens ancre ──────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+
+        // Fermer le menu mobile si ouvert
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+
+        const offset = navbar.offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    // ── Menu hamburger mobile ────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Fermer le menu en cliquant ailleurs
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    // ── Reveal animations au scroll ─────────────────────────
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
